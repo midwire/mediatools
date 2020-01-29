@@ -10,6 +10,7 @@ gem 'rails', '~> 6.0.2', '>= 6.0.2.1'
 gem 'bcrypt', '~> 3.1.7' # Use Active Model has_secure_password
 gem 'bootsnap', '>= 1.4.2', require: false # Reduces boot times through caching
 gem 'bullet', '~> 6.1' # reduce N+1 queries
+gem 'bulma-rails', '~> 0.8.0' # CSS Framework
 gem 'chronic', '~> 0.10' # Parse date and time strings
 gem 'dotenv-rails', '~> 2.2' # Keep security-related data out of the repository
 gem 'file_validators', '~> 2.3' # Validate ActiveStorage file attachments

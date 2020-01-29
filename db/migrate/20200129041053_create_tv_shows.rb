@@ -19,6 +19,7 @@ class CreateTvShows < ActiveRecord::Migration[6.0]
       t.string :type
       t.float :vote_average
       t.integer :vote_count
+      t.string :filepath
 
       t.timestamps
     end

@@ -30,7 +30,9 @@ class Movie < ApplicationRecord
       data = tmdb_instance.to_h
       data['tmdb_id'] = data.delete('id') # Rename the TMDB id
       exclude_attribs = data.keys - attribute_names
-      new(data.except(*exclude_attribs).merge(filepath: filepath))
+      create(data.except(*exclude_attribs).merge(filepath: filepath))
+    rescue ActiveRecord::RecordNotUnique => _err
+      # It is a duplicate so swallow it
     end
 
     private

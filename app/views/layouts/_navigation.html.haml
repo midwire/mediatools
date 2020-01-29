@@ -1,0 +1,10 @@
+%nav.navbar{"aria-label" => "main navigation", role: "navigation"}
+  .navbar-brand
+    %a.navbar-item{href: "/"}
+      %img{alt: "Bulma: a modern CSS framework based on Flexbox", height: "28", src: "https://versions.bulma.io/0.7.0/images/bulma-logo.png", width: "112"}/
+    %a.navbar-item{href: movies_path}
+      Movies
+    %a.navbar-burger{"aria-expanded" => "false", "aria-label" => "menu", role: "button"}
+      %span{"aria-hidden" => "true"}
+      %span{"aria-hidden" => "true"}
+      %span{"aria-hidden" => "true"}

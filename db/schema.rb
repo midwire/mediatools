@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 2020_01_29_041053) do
     t.boolean "video"
     t.float "vote_average"
     t.integer "vote_count"
+    t.string "filepath"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["adult"], name: "index_movies_on_adult"
@@ -67,6 +68,7 @@ ActiveRecord::Schema.define(version: 2020_01_29_041053) do
     t.string "type"
     t.float "vote_average"
     t.integer "vote_count"
+    t.string "filepath"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["first_air_date"], name: "index_tv_shows_on_first_air_date"

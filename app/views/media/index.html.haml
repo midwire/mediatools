@@ -1,0 +1,36 @@
+%h1 Welcome to Mediatools
+- if @media_counts[:movies] > 0 || @media_counts[:tv_shows] > 0
+  %p You've got media!
+  .columns
+    .column
+      .card
+        .card-image
+          %figure.image.is-4by3
+            %a{href: movies_path}
+              = image_tag('movies_logo.jpg')
+        .card-content
+          .content
+            %strong
+              Movies
+            = @media_counts[:movies]
+    .column
+      .card
+        .card-image
+          %figure.image.is-4by3
+            = image_tag('tv_logo.png')
+        .card-content
+          .content
+            %strong
+              TV Shows
+            = @media_counts[:tv_shows]
+- else
+  %p You don't have any media yet.
+
+= form_tag(media_path, method: :post) do
+  .field
+    = label_tag(:path, 'Media Path', class: 'label')
+    .control
+      = text_field_tag(:path, 'Enter the root path to your media files', class: 'input')
+  .field
+    .control
+      = submit_tag('Add Media Files', class: 'button is-primary')

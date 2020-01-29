@@ -82,6 +82,8 @@ GEM
     bullet (6.1.0)
       activesupport (>= 3.0.0)
       uniform_notifier (~> 1.11)
+    bulma-rails (0.8.0)
+      sassc (~> 2.0)
     capistrano (3.11.2)
       airbrussh (>= 1.0.0)
       i18n
@@ -314,6 +316,7 @@ DEPENDENCIES
   bcrypt (~> 3.1.7)
   bootsnap (>= 1.4.2)
   bullet (~> 6.1)
+  bulma-rails (~> 0.8.0)
   capistrano-bundler (~> 1.2)
   capistrano-passenger
   capistrano-rails (~> 1.3)

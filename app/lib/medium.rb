@@ -40,7 +40,7 @@ class Medium
       return false if File.directory?(filepath)
       return false if IGNORED_EXTENSIONS.include?(File.extname(filepath).downcase)
 
-      Rails.logger.debug { "checking: #{filepath}" }
+      # Rails.logger.debug { "checking: #{filepath}" }
 
       mime = mime_type(filepath)
 
