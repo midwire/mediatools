@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 2020_01_29_041053) do
 
   create_table "movies", force: :cascade do |t|
     t.boolean "adult"
+    t.string "backdrop_path"
     t.integer "budget"
     t.string "homepage"
     t.integer "tmdb_id"
@@ -25,6 +26,7 @@ ActiveRecord::Schema.define(version: 2020_01_29_041053) do
     t.string "original_title"
     t.text "overview"
     t.float "popularity"
+    t.string "poster_path"
     t.date "release_date"
     t.integer "revenue"
     t.integer "runtime"
@@ -38,18 +40,20 @@ ActiveRecord::Schema.define(version: 2020_01_29_041053) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["adult"], name: "index_movies_on_adult"
-    t.index ["imdb_id"], name: "index_movies_on_imdb_id", unique: true
+    t.index ["filepath"], name: "index_movies_on_filepath", unique: true
+    t.index ["imdb_id"], name: "index_movies_on_imdb_id"
     t.index ["popularity"], name: "index_movies_on_popularity"
     t.index ["release_date"], name: "index_movies_on_release_date"
     t.index ["runtime"], name: "index_movies_on_runtime"
     t.index ["status"], name: "index_movies_on_status"
-    t.index ["tmdb_id"], name: "index_movies_on_tmdb_id", unique: true
+    t.index ["tmdb_id"], name: "index_movies_on_tmdb_id"
     t.index ["video"], name: "index_movies_on_video"
     t.index ["vote_average"], name: "index_movies_on_vote_average"
     t.index ["vote_count"], name: "index_movies_on_vote_count"
   end
 
   create_table "tv_shows", force: :cascade do |t|
+    t.string "backdrop_path"
     t.date "first_air_date"
     t.string "homepage"
     t.integer "tmdb_id"
@@ -64,6 +68,7 @@ ActiveRecord::Schema.define(version: 2020_01_29_041053) do
     t.string "original_name"
     t.text "overview"
     t.float "popularity"
+    t.string "poster_path"
     t.string "status"
     t.string "type"
     t.float "vote_average"
@@ -76,7 +81,7 @@ ActiveRecord::Schema.define(version: 2020_01_29_041053) do
     t.index ["last_air_date"], name: "index_tv_shows_on_last_air_date"
     t.index ["name"], name: "index_tv_shows_on_name"
     t.index ["next_episode_to_air"], name: "index_tv_shows_on_next_episode_to_air"
-    t.index ["tmdb_id"], name: "index_tv_shows_on_tmdb_id", unique: true
+    t.index ["tmdb_id"], name: "index_tv_shows_on_tmdb_id"
   end
 
 end

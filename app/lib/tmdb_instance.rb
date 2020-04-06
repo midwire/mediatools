@@ -3,12 +3,18 @@
 require 'json'
 
 class TmdbInstance
-  attr_accessor :title, :year, :matches
+  include ActiveModel::Validations
 
-  def initialize(title, year = nil)
+  attr_accessor :title, :year, :matches, :tmdb_id, :configuration
+
+  validate :give_me_something
+
+  def initialize(attrs = {})
     Tmdb::Api.key(api_key) # configure TMDB API key
-    @title = title
-    @year  = year
+    @title         = attrs[:title]
+    @year          = attrs[:year]
+    @tmdb_id       = attrs[:tmdb_id]
+    @configuration = Tmdb::Configuration.new
   end
 
   def movie?
@@ -31,5 +37,9 @@ class TmdbInstance
     ENV.fetch('TMDB_KEY') do
       Settings.instance[:movies][:tmdb_key]
     end
+  end
+
+  def give_me_something
+    errors.add(:base, 'We need a title or the tmdb_id at a minimum.') if title.blank? && tmdb_id.blank?
   end
 end

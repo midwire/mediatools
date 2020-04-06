@@ -3,6 +3,8 @@
 class Movie < ApplicationRecord
   include MediaCommon
 
+  after_initialize :initialize_tmdb
+
   validates :title, presence: true
 
   class << self
@@ -15,7 +17,7 @@ class Movie < ApplicationRecord
       base          = basename(filepath)
       possible_year = possible_year_in_title(base)
       clean_title   = sanitize(base).gsub(/[\s\.\-\_]\(?\d+\s*\)?$/, '')
-      tmdb_instance = TmdbInstance.new(clean_title, possible_year)
+      tmdb_instance = TmdbInstance.new(title: clean_title, year: possible_year)
       return tmdb_instance if tmdb_instance.movie?
 
       false
@@ -42,5 +44,15 @@ class Movie < ApplicationRecord
       md = title_with_year.match(/(\d{4}+)/)
       md ? md[1] : nil
     end
+  end
+
+  def tmdb_images
+    @tmdb_images ||= Tmdb::Movie.images(tmdb_id)
+  end
+
+  private
+
+  def initialize_tmdb
+    tmdb
   end
 end

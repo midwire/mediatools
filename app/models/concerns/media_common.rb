@@ -3,6 +3,26 @@
 module MediaCommon
   extend ActiveSupport::Concern
 
+  included do
+    def tmdb
+      @tmdb ||= TmdbInstance.new(tmdb_id: tmdb_id)
+    end
+
+    # ["w92", "w154", "w185", "w342", "w500", "w780", "original"]
+    def poster_url(size)
+      # tmdb.configuration.poster_sizes
+      base_url = tmdb.configuration.base_url
+      "#{base_url}/#{size}#{poster_path}"
+    end
+
+    # ["w300", "w780", "w1280", "original"]
+    def backdrop_url(size)
+      # tmdb.configuration.backdrop_sizes
+      base_url = tmdb.configuration.base_url
+      "#{base_url}/#{size}#{backdrop_path}"
+    end
+  end
+
   # rubocop:disable Metrics/BlockLength
   class_methods do
     # rubocop:disable Metrics/AbcSize

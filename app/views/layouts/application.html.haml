@@ -6,11 +6,10 @@
     %title Mediatools
     = csrf_meta_tags
     = csp_meta_tag
-    %link{rel: "stylesheet", href: "https://unpkg.com/bulmaswatch/cerulean/bulmaswatch.min.css"}
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   %body
     = render 'layouts/navigation'
-    %section.section
-      .content
-        = yield
+    = render 'layouts/flash'
+    = yield
+    = render 'layouts/footer'

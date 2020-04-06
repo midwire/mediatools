@@ -1,6 +1,7 @@
 class CreateTvShows < ActiveRecord::Migration[6.0]
   def change
     create_table :tv_shows do |t|
+      t.string :backdrop_path
       t.date :first_air_date
       t.string :homepage
       t.integer :tmdb_id
@@ -15,6 +16,7 @@ class CreateTvShows < ActiveRecord::Migration[6.0]
       t.string :original_name
       t.text :overview
       t.float :popularity
+      t.string :poster_path
       t.string :status
       t.string :type
       t.float :vote_average
@@ -23,7 +25,7 @@ class CreateTvShows < ActiveRecord::Migration[6.0]
 
       t.timestamps
     end
-    add_index :tv_shows, :tmdb_id, unique: true
+    add_index :tv_shows, :tmdb_id
     add_index :tv_shows, :first_air_date
     add_index :tv_shows, :in_production
     add_index :tv_shows, :last_air_date

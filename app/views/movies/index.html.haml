@@ -1,0 +1,19 @@
+.container
+  .columns
+    - @movies.find_each(batch_size: 6) do |movie|
+      .column
+        .card
+          .card-image
+            %figure.image.is-3by4
+              = image_tag(movie.poster_url('w154'))
+          .card-content
+            .media
+              .media-left
+                %figure.image.is-30x30
+                  = image_tag('star.png')
+              .media-content
+                %p= movie.popularity
+            .content
+              %p.title.is-6= movie.title
+
+  = will_paginate(@movies)

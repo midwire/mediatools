@@ -1,10 +1,39 @@
 %nav.navbar{"aria-label" => "main navigation", role: "navigation"}
-  .navbar-brand
-    %a.navbar-item{href: "/"}
-      %img{alt: "Bulma: a modern CSS framework based on Flexbox", height: "28", src: "https://versions.bulma.io/0.7.0/images/bulma-logo.png", width: "112"}/
-    %a.navbar-item{href: movies_path}
-      Movies
-    %a.navbar-burger{"aria-expanded" => "false", "aria-label" => "menu", role: "button"}
-      %span{"aria-hidden" => "true"}
-      %span{"aria-hidden" => "true"}
-      %span{"aria-hidden" => "true"}
+  .container
+    .navbar-brand
+      %a.navbar-item{href: "/"}
+        = image_tag('movie_icon.png')
+        &nbsp;
+        Media Tools
+      %a.navbar-burger{"aria-expanded" => "false", "aria-label" => "menu", role: "button"}
+        %span{"aria-hidden" => "true"}
+        %span{"aria-hidden" => "true"}
+        %span{"aria-hidden" => "true"}
+    .navbar-menu
+      .navbar-end
+        .navbar-item
+          = link_to('Home', '/')
+        .navbar-item
+          = link_to('About', root_path)
+        -# - if user_signed_in?
+        -#   .navbar-item.has-dropdown.is-hoverable
+        -#     .navbar-link
+        -#       = current_user.name
+        -#     .navbar-dropdown
+        -#       .navbar-item
+        -#         %div
+        -#           %span.icon.is-small
+        -#             %i.fa.fa-user-circle-o
+        -#           &nbsp;
+        -#           = link_to("Profile", '/')
+        -#       .navbar-item
+        -#         %div
+        -#           %span.icon.is-small
+        -#             %i.fa.fa-sign-out
+        -#           &nbsp;
+        -#           = link_to("Sign Out", destroy_user_session_path, method: :delete)
+        -# - else
+        -#   .navbar-item
+        -#     = link_to('Sign Up', new_user_registration_path)
+        -#   .navbar-item
+        -#     = link_to('Sign In', new_user_session_path)

@@ -1,0 +1,5 @@
+- flash.each do |klass, msg|
+  - if msg.respond_to?(:empty?)
+    %div{ class: flash_classes(klass) }
+      %button.delete
+      = sanitize(msg)

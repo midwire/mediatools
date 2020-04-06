@@ -16,4 +16,12 @@ require("channels")
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
+// Load Vendored JS
 require("jquery")
+
+// Load custom JS
+require("packs/bulma")
+
+document.addEventListener("turbolinks:load", () => {
+  // alert("OK");
+});

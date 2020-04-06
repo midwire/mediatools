@@ -4,6 +4,7 @@ class CreateMovies < ActiveRecord::Migration[6.0]
   def change
     create_table :movies do |t|
       t.boolean :adult
+      t.string :backdrop_path
       t.integer :budget
       t.string :homepage
       t.integer :tmdb_id
@@ -12,6 +13,7 @@ class CreateMovies < ActiveRecord::Migration[6.0]
       t.string :original_title
       t.text :overview
       t.float :popularity
+      t.string :poster_path
       t.date :release_date
       t.integer :revenue
       t.integer :runtime
@@ -25,9 +27,10 @@ class CreateMovies < ActiveRecord::Migration[6.0]
 
       t.timestamps
     end
+    add_index :movies, :filepath, unique: true
     add_index :movies, :adult
-    add_index :movies, :tmdb_id, unique: true
-    add_index :movies, :imdb_id, unique: true
+    add_index :movies, :tmdb_id
+    add_index :movies, :imdb_id
     add_index :movies, :popularity
     add_index :movies, :release_date
     add_index :movies, :runtime
