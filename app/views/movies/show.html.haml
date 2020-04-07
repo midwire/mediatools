@@ -1,0 +1,25 @@
+.section.has-bg-image{'data-image' => @movie.backdrop_url('w1280')}
+  .container
+    .columns.is-mobile
+      .column.is-one-third
+        .card
+          .card-image
+            %figure.image
+              = image_tag(@movie.poster_url('w342'))
+      .column.has-tinted-background
+        .content
+          .title
+            = @movie.title
+
+          .level
+            .level-left
+              .level-item
+                Released:
+                = @movie.release_date
+            .level-right
+              .level-item
+                Score:
+                = @movie.vote_average
+
+          %p
+            = @movie.overview

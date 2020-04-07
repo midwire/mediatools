@@ -46,10 +46,6 @@ class Movie < ApplicationRecord
     end
   end
 
-  def tmdb_images
-    @tmdb_images ||= Tmdb::Movie.images(tmdb_id)
-  end
-
   private
 
   def initialize_tmdb

@@ -1,0 +1,13 @@
+.box {
+  box-shadow: 0 0.5em 1em -0.125em rgba(0,0,0, 0.1), 0 0px 0 1px rgba(0,0,0, 0.02);
+}
+.has-bg-image {
+  background-size:  cover;
+  background-color: #999;
+}
+.has-tinted-background {
+  border-radius: 25px;
+  background: rgba($scheme-main, 0.7);
+  margin-right: 20px;
+  padding: 20px;
+}

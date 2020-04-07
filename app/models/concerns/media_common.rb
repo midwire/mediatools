@@ -21,6 +21,12 @@ module MediaCommon
       base_url = tmdb.configuration.base_url
       "#{base_url}/#{size}#{backdrop_path}"
     end
+
+    private
+
+    def tmdb_images
+      @tmdb_images ||= Tmdb::Movie.images(tmdb_id)
+    end
   end
 
   # rubocop:disable Metrics/BlockLength

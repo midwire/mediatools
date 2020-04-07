@@ -12,17 +12,29 @@
 // });
 
 document.addEventListener("turbolinks:load", function() {
-  // alert("Bulma Loaded");
-  // console.log("bulma.js loading")
+  function activeBulmaBurger() {
+    // alert("Bulma Loaded");
+    // console.log("bulma.js loading")
 
-  var burger = document.querySelector('.navbar-burger');
-  var menu = document.querySelector('.navbar-menu');
+    var burger = document.querySelector('.navbar-burger');
+    var menu = document.querySelector('.navbar-menu');
 
-  if (burger !== null) {
-    burger.addEventListener('click', function() {
-        burger.classList.toggle('is-active');
-        menu.classList.toggle('is-active');
+
+    if (burger !== null) {
+      burger.addEventListener('click', function() {
+          burger.classList.toggle('is-active');
+          menu.classList.toggle('is-active');
+      });
+    }
+  }
+
+  function loadDynamicBackgroundImages() {
+    $('.has-bg-image').each(function() {
+      var url = $(this).attr('data-image');
+      $(this).css('background-image', 'url(' +url+ ')');
     });
   }
 
+  activeBulmaBurger();
+  loadDynamicBackgroundImages();
 });
